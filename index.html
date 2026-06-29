@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Happy Bday!</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&amp;family=Plus+Jakarta+Sans:wght@400;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-container": "#ff7f50",
+                    "surface-dim": "#d9dadb",
+                    "surface-bright": "#f8f9fa",
+                    "tertiary-fixed-dim": "#96d5a0",
+                    "on-tertiary": "#ffffff",
+                    "tertiary": "#2f6a3f",
+                    "on-secondary-container": "#6e5c00",
+                    "on-secondary": "#ffffff",
+                    "on-error": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "on-primary-fixed": "#380c00",
+                    "on-error-container": "#93000a",
+                    "secondary-container": "#fcd400",
+                    "tertiary-fixed": "#b2f2bb",
+                    "on-tertiary-container": "#00441d",
+                    "on-primary-container": "#6c2000",
+                    "secondary-fixed-dim": "#e9c400",
+                    "on-surface": "#191c1d",
+                    "surface-tint": "#a43c12",
+                    "surface-container-highest": "#e1e3e4",
+                    "inverse-on-surface": "#f0f1f2",
+                    "on-primary": "#ffffff",
+                    "background": "#f8f9fa",
+                    "on-background": "#191c1d",
+                    "surface-container": "#edeeef",
+                    "tertiary-container": "#75b280",
+                    "on-primary-fixed-variant": "#822800",
+                    "surface-container-low": "#f3f4f5",
+                    "primary-fixed-dim": "#ffb59c",
+                    "surface-variant": "#e1e3e4",
+                    "surface-container-high": "#e7e8e9",
+                    "on-secondary-fixed": "#221b00",
+                    "outline-variant": "#dec0b6",
+                    "on-secondary-fixed-variant": "#544600",
+                    "surface": "#f8f9fa",
+                    "secondary-fixed": "#ffe16d",
+                    "secondary": "#705d00",
+                    "on-surface-variant": "#57423b",
+                    "on-tertiary-fixed-variant": "#145129",
+                    "error": "#ba1a1a",
+                    "on-tertiary-fixed": "#00210b",
+                    "inverse-primary": "#ffb59c",
+                    "primary": "#a43c12",
+                    "surface-container-lowest": "#ffffff",
+                    "primary-fixed": "#ffdbcf",
+                    "inverse-surface": "#2e3132",
+                    "outline": "#8b7169"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "container-padding": "24px",
+                    "section-gap": "64px",
+                    "base": "8px",
+                    "element-gap": "16px"
+            },
+            "fontFamily": {
+                    "display-lg-mobile": ["Quicksand"],
+                    "headline-md": ["Quicksand"],
+                    "display-lg": ["Quicksand"],
+                    "label-sm": ["Plus Jakarta Sans"],
+                    "body-lg": ["Plus Jakarta Sans"],
+                    "body-md": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-sm": ["13px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+    #floatingEmojis {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 9999;
+}
+
+.floating {
+    position: absolute;
+    font-size: 2rem;
+    animation: floatUp 7s ease-out forwards;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(100vh) scale(0.5);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(-120vh) scale(1.2);
+        opacity: 0;
+    }
+}
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        
+        .polaroid {
+            background: white;
+            padding: 10px 10px 30px 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transform: rotate(var(--rotation));
+            transition: transform 0.3s ease;
+        }
+        .polaroid:hover {
+            transform: rotate(0deg) scale(1.05);
+            z-index: 10;
+        }
+        body {
+    background-image: url("assets/bg/2.webp");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(255,255,255,0.82);
+    z-index: -1;
+}
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md overflow-x-hidden min-h-screen flex flex-col">
+<div id="floatingEmojis"></div>
+<!-- TopNavBar Simplified -->
+<header class="w-full top-0 sticky z-50 bg-white/80 backdrop-blur-md">
+<nav class="flex justify-center items-center px-container-padding py-6 max-w-7xl mx-auto">
+<div class="font-display-lg text-headline-md text-primary-container tracking-tight">
+                My fav kolandha pulla turns 18 💫
+            </div>
+</nav>
+</header>
+<main class="flex-grow flex items-center justify-center">
+<!-- Hero Section Minimalist -->
+<section class="relative w-full max-w-6xl mx-auto px-container-padding py-12 flex flex-col lg:flex-row items-center gap-12 lg:gap-24 overflow-hidden">
+<!-- Content Area -->
+<div class="relative z-10 text-center lg:text-left flex-1">
+<h1 class="font-display-lg text-display-lg-mobile md:text-display-lg text-primary-container mb-6 leading-tight">
+                    Happy 18th da Vasundharannnnn!🎉
+                </h1>
+<p class="font-headline-md text-headline-md text-on-surface-variant mb-10 max-w-md">
+                    For someone who feels like home :) 
+                </p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+
+<button id="openBtn" class="bg-primary-container text-white px-10 py-4 rounded-full font-headline-md text-headline-md shadow-[0_4px_20px_rgba(255,127,80,0.3)] hover:brightness-110 transition-all active:scale-95 flex items-center justify-center gap-2">
+                        Open 💌
+                        <span class="material-symbols-outlined" data-icon="auto_awesome">auto_awesome</span>
+</button>
+</div>
+</div>
+<!-- Polaroid Gallery -->
+<div class="relative z-10 flex-1 grid grid-cols-2 gap-6 p-4">
+<div class="polaroid" style="--rotation: -3deg;">
+<div class="w-full aspect-square bg-surface-container-high flex items-center justify-center rounded-sm overflow-hidden">
+<img alt="Memories 1" class="w-full h-full object-cover" src="assets/landing page/us1.jpeg"/>
+</div>
+</div>
+<div class="polaroid" style="--rotation: 4deg; margin-top: 20px;">
+<div class="w-full aspect-square bg-surface-container-high flex items-center justify-center rounded-sm overflow-hidden">
+<img alt="Memories 2" class="w-full h-full object-cover" src="assets/landing page/us2.jpeg"/>
+</div>
+</div>
+<div class="polaroid" style="--rotation: -2deg; margin-top: -10px;">
+<div class="w-full aspect-square bg-surface-container-high flex items-center justify-center rounded-sm overflow-hidden">
+<video autoplay muted loop playsinline class="w-full h-full object-cover">
+    <source src="assets/landing page/gif1.MP4" type="video/mp4">
+</video>
+</div>
+</div>
+<div class="polaroid border-2 border-dashed border-primary-container/30 flex flex-col items-center justify-center text-primary-container/60 hover:text-primary-container transition-colors cursor-pointer" style="--rotation: 2deg; margin-top: 10px; background: rgba(255,255,255,0.5);">
+<video autoplay muted loop playsinline class="w-full h-full object-cover">
+    <source src="assets/landing page/Timeline 1.mov" type="video/mp4">
+</video>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer Simplified -->
+<footer class="w-full py-8 text-center bg-white/50">
+<p class="font-body-md text-on-surface-variant opacity-70">
+            From your fav bestieee.
+        </p>
+</footer>
+<script>
+        // Micro-interactions
+        document.querySelectorAll('.material-symbols-outlined').forEach(icon => {
+            icon.addEventListener('mouseover', () => {
+                icon.style.transition = 'transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+                icon.style.transform = 'scale(1.2) rotate(10deg)';
+            });
+            icon.addEventListener('mouseout', () => {
+                icon.style.transform = 'scale(1) rotate(0deg)';
+            });
+        });
+    </script>
+<section id="beginning" class="min-h-screen flex items-center justify-center px-6">
+    
+    <div class="text-center max-w-4xl">
+
+        <h1 id="typingText"
+            class="text-5xl md:text-7xl font-bold text-primary-container leading-tight">
+        </h1>
+
+        <p id="line2"
+           class="mt-10 text-3xl opacity-0 transition-opacity duration-1000 text-on-surface-variant">
+            But somehow....
+        </p>
+
+        <p id="line3"
+           class="mt-6 text-4xl opacity-0 transition-opacity duration-1000 text-primary-container font-semibold leading-relaxed">
+            now you feel like home 💛
+        </p>
+        <button id="continueBtn"
+class="mt-16 bg-primary-container text-white px-8 py-4 rounded-full text-2xl hover:scale-105 transition-all duration-300 shadow-lg opacity-0">
+    Continue ✨
+</button>
+
+    </div>
+
+</section>
+<script>
+const button = document.getElementById("openBtn");
+
+button.addEventListener("click", () => {
+
+    const container = document.getElementById("floatingEmojis");
+
+    const emojis = ["💛"];
+
+    // create floating emojis
+    for (let i = 0; i < 25; i++) {
+
+        const emoji = document.createElement("div");
+
+        emoji.classList.add("floating");
+
+        emoji.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
+
+        emoji.style.left = Math.random() * 100 + "vw";
+
+        emoji.style.animationDuration =
+            (4 + Math.random() * 3) + "s";
+
+        emoji.style.fontSize =
+            (40 + Math.random() * 50) + "px";
+
+        container.appendChild(emoji);
+
+        setTimeout(() => {
+            emoji.remove();
+        }, 4000);
+    }
+
+    // delayed smooth scroll
+    setTimeout(() => {
+
+    const target = document.getElementById("beginning");
+
+    const targetPosition = target.offsetTop;
+
+    const startPosition = window.pageYOffset;
+
+    const distance = targetPosition - startPosition;
+
+    const duration = 3000;
+
+    let start = null;
+
+    function animation(currentTime) {
+
+        if (start === null)
+            start = currentTime;
+
+        const timeElapsed = currentTime - start;
+
+        const run = ease(timeElapsed, startPosition, distance, duration);
+
+        window.scrollTo(0, run);
+
+        if (timeElapsed < duration) {
+
+    requestAnimationFrame(animation);
+
+} else {
+
+    typeText();
+
+}
+    }
+
+    function ease(t, b, c, d) {
+
+        t /= d / 2;
+
+        if (t < 1)
+            return c / 2 * t * t + b;
+
+        t--;
+
+        return -c / 2 * (t * (t - 2) - 1) + b;
+    }
+
+    requestAnimationFrame(animation);
+
+},0);
+
+});
+</script>
+<script>
+
+const text = "Our bond started just a month ago:)";
+
+let index = 0;
+
+function typeText() {
+
+    if(index < text.length) {
+
+        document.getElementById("typingText").innerHTML += text.charAt(index);
+
+        index++;
+
+        setTimeout(typeText, 100);
+
+    } else {
+
+        // after first line finishes
+
+        setTimeout(() => {
+
+            document.getElementById("line2")
+                .classList.remove("opacity-0");
+
+            // after second line appears
+
+            setTimeout(() => {
+
+                document.getElementById("line3")
+                    .classList.remove("opacity-0");
+                    setTimeout(() => {
+
+    document.getElementById("continueBtn")
+        .classList.remove("opacity-0");
+
+}, 1200);
+
+            }, 1800);
+
+        }, 800);
+    }
+}
+
+</script>
+
+<!-- New Section: Little Moments -->
+<!-- New Section: Little Moments -->
+<section id="memories" class="w-full py-section-gap overflow-hidden">
+
+    <div class="max-w-6xl mx-auto px-container-padding">
+
+        <!-- Heading -->
+        <div class="reveal text-center mb-16">
+            <h2 class="font-display-lg text-display-lg-mobile md:text-display-lg text-primary mb-4">
+                Our Moments 📸
+            </h2>
+
+            <div class="w-24 h-1 bg-primary-container/30 mx-auto rounded-full"></div>
+
+            <div class="mt-12 flex justify-center">
+
+    <button id="memory1Btn"
+        class="bg-primary-container text-white px-8 py-4 rounded-full text-xl shadow-lg hover:scale-105 transition-all">
+        A little memory 📸
+    </button>
+
+</div>
+        </div>
+
+        <!-- GRID STARTS -->
+        <div class="flex flex-col items-center gap-10">
+
+            <!-- Memory 1 -->
+            <div id="memory1" class="hidden flex flex-col gap-6 items-center group">
+
+                <div class="polaroid w-[300px]" style="--rotation:-2deg;">
+
+    <div class="w-[280px] h-[470px] overflow-hidden rounded-sm flex flex-col">
+
+        <!-- Photo -->
+        <div class="h-[65%] overflow-hidden">
+            <img
+                src="assets/memories page/mem_core.jpeg"
+                class="w-full h-full object-cover"
+            >
+        </div>
+
+        <!-- Video -->
+        <div class="h-[35%] overflow-hidden">
+            <video
+                autoplay
+                muted
+                loop
+                playsinline
+                class="w-full h-full object-cover">
+
+                <source
+                    src="assets/memories page/mem_core_ls.mp4"
+                    type="video/mp4">
+            </video>
+        </div>
+
+    </div>
+
+</div>
+
+                <div class="text-center">
+                    <p class="font-body-lg text-on-surface-variant italic font-medium leading-relaxed">
+                        "Innum idhu pol neraiyaaaaaa Dosaii saapduvommm....🤝"
+                    </p>
+                    <button id="memory2Btn"
+    class="hidden mt-6 bg-primary-container text-white px-8 py-4 rounded-full text-xl shadow-lg hover:scale-105 transition-all">
+    Next one 🤭
+</button>
+                </div>
+
+            </div>
+
+            <!-- Memory 2 -->
+            <div id="memory2" class="hidden flex flex-col gap-6 items-center group">
+
+                <div class="polaroid w-[300px]" style="--rotation: 2deg;">
+
+                    <div class="w-[280px] h-[470px] bg-surface-container overflow-hidden rounded-sm relative">
+
+                        <video autoplay loop muted playsinline
+                            class="w-full h-full object-cover">
+
+                            <source src="assets/memories page/mem2.MP4">
+
+                        </video>
+
+                    </div>
+
+                </div>
+
+                <div class="text-center">
+                    <p class="font-body-lg text-on-surface-variant italic font-medium leading-relaxed">
+                        "Nee vekka padurathaeyyy thani azhagu thaan da kutty paiyaaa"
+                    </p>
+                    <button id="memory3Btn"
+    class="hidden mt-6 bg-primary-container text-white px-8 py-4 rounded-full text-xl shadow-lg hover:scale-105 transition-all">
+    One more thing... ✨
+</button>
+                </div>
+
+            </div>
+
+            <!-- Memory 3 -->
+            <div id="memory3" class="hidden flex flex-col gap-6 items-center group">
+
+                <div class="polaroid w-[300px]" style="--rotation: -3deg;">
+
+                    <div class="w-[280px] h-[470px] bg-surface-container overflow-hidden rounded-sm relative">
+
+                        <img
+                            alt="Quiet moment"
+                            class="w-full h-full object-cover"
+                            src="assets/memories page/gibli art.png"
+                        />
+
+                    </div>
+
+                </div>
+
+                <div class="text-center">
+                    <p class="font-body-lg text-on-surface-variant italic font-medium leading-relaxed">
+                        "Annaiku naama photo eduka mudiyalaye nu konjam varuthama thaan irunchu.... But ippo illaaa😄"
+                    </p>
+                    <button id="babyStoryBtn"
+    class="hidden mt-6 bg-primary-container text-white px-8 py-4 rounded-full text-xl shadow-lg hover:scale-105 transition-all">
+    Innum irukku (press me) 💌
+</button>
+
+                </div>
+
+            </div>
+
+        </div>
+        <!-- GRID ENDS -->
+
+
+    </div>
+
+</section>
+
+<section id="babyStory"
+class="hidden min-h-screen flex flex-col items-center justify-center px-6 py-20">
+
+    <h2 class="text-5xl font-bold text-primary-container mb-12 text-center">
+        Maybe it was always meant to happen ✨
+    </h2>
+
+    <img
+        src="assets/baby convo.png"
+        class="max-w-4xl w-full rounded-3xl shadow-xl"
+    >
+
+    <p class="mt-10 text-2xl italic text-on-surface-variant text-center max-w-3xl">
+        We didn't know each other then...
+        but somehow life still managed to make us best friends 💛
+    </p>
+
+    <button
+    id="finalLetterBtn"
+    class="hidden mt-10 bg-primary-container text-white px-8 py-4 rounded-full text-xl shadow-lg hover:scale-105 transition-all">
+    One Last Thing 💌
+</button>
+
+</section>
+
+<section id="letter"
+class="hidden min-h-screen flex items-center justify-center px-6 py-20">
+
+    <div id="letterCard"
+        class="bg-white p-10 rounded-3xl shadow-xl cursor-pointer hover:scale-105 transition-all duration-300 max-w-md text-center">
+
+        <h2 class="text-4xl font-bold text-primary-container">
+            Dear Vasu 💛
+        </h2>
+
+        <p class="mt-4 text-on-surface-variant italic">
+            Click to open ✨
+        </p>
+
+    </div>
+    <div id="actualLetter"
+    class="hidden max-w-3xl bg-white p-10 rounded-3xl shadow-xl mt-10">
+
+    <p class="text-lg leading-9 text-on-surface-variant">
+        Heyyy twinnn! Happyy 18th bday daa🥳🎂 🎉 🎊 Ivlo naal kolandha kolandha nu oora yemathittu suththitu irundhaa....
+        Kadaisiyaa epdiyo neeyum oru periya pulla aaita😂 (periya paiyan sry😅)
+        And, coming to main vishyam..... Chaaa ipdi enakku oru frnd kedaippa nu naa nenachadhu kooda illaa.... Adhuvum ennaya maariyaee oruthar...
+        Naama rep ah irundha andha 2nd sem irukkaeyy😩 superraaa irunchuu theriyumaa....
+        Thanks for making it a special semesterr...💕 I've never felt this much of a comfort with any else...
+        Naa enna sonnalum adha nee purinjikra vidham, namma random conversations, ivlo seekiram namma ivlo close aavom nu naa sathiyama expect pannave illaa🥺💛
+Sometimes un kitta pesumbodhu naa enna pesuren nu kooda yosikka maaten... because I know nee judge panna maata nu😌. Adhu romba rare theriyumaa...
+And honestly, indha one month la vandha memories ellame enakku romba special 📸✨. Innum kadaisi varaikkum idhey friendship thodaranummm...💕
+18 vandhuruchu nu periya periya goals, responsibilities nu ellarum pesuvaanga... aana nee ippo irukkura maari happy-ah, kind-ah, konjam loosu-ah irundha pothum😂💛
+Avan oruthana mattumaee yosichuttaee irukkaadha.... Avan kedakuraan... Enakku theriyum unnoda worth, nee freeya vidu...
+Unakku pudicha ellame nadakkanum. Nee aasapadra edam ellam reach pannanum. Life la neraya santhosham kedaikkanum. 
+And edho oru corner la naanum un favourite bestie list la irukkanum😌🤝
+
+Once again, Happy Birthday da Vasuuu🥳🎂💛
+
+Lots of love,
+Your fav bestieee 🤝🫂💛
+        Thankyou for existing erumaaaa🫂
+    </p>
+<!-- FOOTER -->
+<div class="text-center mt-20">
+
+    <p class="text-2xl text-primary-container font-semibold">
+        Happy 18th once again 💛✨
+    </p>
+
+    <p class="text-sm text-gray-500 mt-4 mb-16">
+        Made with lots of love, patience and debugging 😭
+    </p>
+
+</div>
+</div>
+</section>
+
+<script>
+
+const continueBtn = document.getElementById("continueBtn");
+
+continueBtn.addEventListener("click", () => {
+
+    const target = document.getElementById("memories");
+
+    const targetPosition = target.offsetTop;
+
+    const startPosition = window.pageYOffset;
+
+    const distance = targetPosition - startPosition;
+
+    const duration = 4000;
+
+    let start = null;
+
+    function animation(currentTime) {
+
+        if (start === null)
+            start = currentTime;
+
+        const timeElapsed = currentTime - start;
+
+        const run = ease(timeElapsed, startPosition, distance, duration);
+
+        window.scrollTo(0, run);
+
+        if (timeElapsed < duration)
+            requestAnimationFrame(animation);
+    }
+
+    function ease(t, b, c, d) {
+
+        t /= d / 2;
+
+        if (t < 1)
+            return c / 2 * t * t + b;
+
+        t--;
+
+        return -c / 2 * (t * (t - 2) - 1) + b;
+    }
+
+    requestAnimationFrame(animation);
+
+});
+
+</script>
+<script>
+
+document.getElementById("memory1Btn").addEventListener("click", () => {
+
+    document.getElementById("memory1")
+        .classList.remove("hidden");
+
+    document.getElementById("memory1Btn")
+        .style.display = "none";
+
+    setTimeout(() => {
+
+    document.getElementById("memory2Btn")
+        .classList.remove("hidden");
+
+}, 3000);
+
+    document.getElementById("memory1")
+        .scrollIntoView({behavior:"smooth"});
+
+});
+
+
+document.getElementById("memory2Btn").addEventListener("click", () => {
+
+    document.getElementById("memory2")
+        .classList.remove("hidden");
+
+    document.getElementById("memory2Btn")
+        .style.display = "none";
+
+    setTimeout(() => {
+
+    document.getElementById("memory3Btn")
+        .classList.remove("hidden");
+
+}, 3000);
+
+    document.getElementById("memory2")
+        .scrollIntoView({behavior:"smooth"});
+
+});
+
+
+document.getElementById("memory3Btn").addEventListener("click", () => {
+
+    document.getElementById("memory3")
+        .classList.remove("hidden");
+
+    document.getElementById("memory3Btn")
+        .style.display = "none";
+
+    setTimeout(() => {
+
+    document.getElementById("babyStoryBtn")
+        .classList.remove("hidden");
+
+}, 4000);
+
+
+    document.getElementById("memory3")
+        .scrollIntoView({behavior:"smooth"});
+
+});
+
+
+document.getElementById("babyStoryBtn")
+.addEventListener("click", () => {
+
+    document.getElementById("babyStoryBtn").innerText = "Konjam poru... 🤭";
+document.getElementById("babyStoryBtn").disabled = true;
+
+    const story = document.getElementById("babyStory");
+
+setTimeout(() => {
+
+    story.classList.remove("hidden");
+    story.classList.add("flex");
+
+    story.scrollIntoView({
+        behavior:"smooth"
+    });
+
+    setTimeout(() => {
+
+        window.scrollBy({
+            top: 50,
+            behavior: "smooth"
+        });
+
+    }, 4500);
+
+}, 2000);
+
+setTimeout(() => {
+
+    document.getElementById("finalLetterBtn")
+        .classList.remove("hidden");
+
+}, 5000);
+
+});
+
+document.getElementById("finalLetterBtn")
+.addEventListener("click", () => {
+
+    const letter = document.getElementById("letter");
+
+    letter.classList.remove("hidden");
+    letter.classList.add("flex");
+
+    letter.scrollIntoView({
+        behavior:"smooth"
+    });
+
+});
+
+document.getElementById("letterCard")
+.addEventListener("click", () => {
+
+    document.getElementById("actualLetter")
+        .classList.remove("hidden");
+
+    document.getElementById("actualLetter")
+        .scrollIntoView({
+            behavior:"smooth"
+        });
+
+});
+</script>
+</body></html>
